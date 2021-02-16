@@ -1,0 +1,18 @@
+#images
+Docker images
+docker images -q
+docker rmi [images-id]
+docker rmi $(docker images -q)
+
+#containers
+docker ps
+docker rm [container id]
+docker stop [c id]
+docker ps -a -q #id of all containers
+docker rm $(docker ps -a -q)
+#images history
+docker image history [img-id] # show layers of an image for full commands use --no-trunc flug
+docker image save [img-id] # creat a tar file that has all the layers bundled in it 
+
+#run containers
+docker run --rm -it [img-id or name] sh
