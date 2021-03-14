@@ -1,13 +1,12 @@
-FROM alpine
+FROM alpine:3.11
 
-EXPOSE 80
+RUN apk update && apk add nginx openrc
 
-RUN apk update && apk add nginx
+RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
-WORKDIR /src
+RUN apk add php7 php7-fpm php7-opcache
 
-COPY ./src/* .
+RUN apk add php7-gd php7-mysqli php7-zlib php7-curl php7-json
 
-RUN ./conf.sh
 
-ENTRYPOINT ["nginx"]
+
