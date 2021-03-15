@@ -4,17 +4,9 @@ rc-status
 
 /usr/bin/mysql_install_db  --datadir=/var/lib/mysql
 
-user="root"
-
-dbname="wordpress"
-
-name="wp-user"
-
-pass="wp-pass"
-
-mysql -u $user -e "CREATE DATABASE $dbname;CREATE USER $name@'localhost' identified by '$pass';GRANT ALL ON *.* to $name@'%' WITH GRANT OPTION;FLUSH PRIVILEGES;"
-
 service mariadb start
+
+mysql -u root -e "CREATE DATABASE wordpress;GRANT ALL ON wordpress.* to 'wp-user'@'localhost' IDENTIFIED BY 'wp-pass';FLUSH PRIVILEGES;"
 
 service php-fpm7 start
 
