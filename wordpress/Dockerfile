@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-RUN apk update && apk add nginx openrc mysql mysql-client php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-json
+RUN apk update && apk add nginx openrc php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-json
 
 RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
