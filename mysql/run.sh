@@ -8,5 +8,6 @@ service mariadb start
 
 mysql -u root -e "CREATE DATABASE wordpress;GRANT ALL ON wordpress.* to 'wp-user'@'%' IDENTIFIED BY 'wp-pass';FLUSH PRIVILEGES;"
 
-tail -f /dev/null
+mysql < /wordpress.sql -u root wordpress
 
+tail -f /dev/null

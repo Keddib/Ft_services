@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  web:
+    build: ./wordpress
+    ports:
+      - "80:80"
+    links:
+      - "mysql-service"
+  mysql-service:
+    build: ./mysql
+    ports:
+      - "3306:3306"

@@ -1,4 +1,3 @@
-
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
 /**
@@ -30,10 +29,10 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'wp-db';
+$cfg['Servers'][$i]['host'] = 'mysql-service';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
-$cfg['Servers'][$i]['port'] = '3306'; 
+$cfg['Servers'][$i]['port'] = '3306';
 
 /**
  * phpMyAdmin configuration storage settings.
