@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-v2
+  labels:
+    creation_method: manual
+    env: prod
+spec:
+  containers:
+  - image: my-app
+    name: js-app
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 8080
+      protocol: TCP
