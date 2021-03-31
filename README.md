@@ -26,5 +26,29 @@
 			> automatic scaling
 
 # Kubernetes Objects
-	-> Pods:
-		1.
+	-> Pods: running containers in K8S
+		* Introduction to pods:
+			1. understand why we need pods
+			2. understand what is a pod
+			3. orgnizing containers across pods proprly
+		* Creating pods from yaml
+			1. examin a YAML descriptor for a pod
+				- $ kubectl get po [pod name] -o yaml
+			2. creating a simple Yaml desc for a pod
+			3. Using kubectl create to create a pod
+				- $ kubectl create -f file.yaml
+			4. viewing applicatin logs
+				- $ kubectl logs [pod name]
+				- $ kubectl logs [pod name] [container-name] # specify a container within a pod
+			5. sending requests to the pod
+				- forwarding a local network port to aport in a pod
+				- $ kubctl port-forword [pod name] [local port]:[pod port]
+		* orgnazing pods with labels
+		* Listing subset of pods through label selectors
+		* Using labels and selectors to constrain pod scheduling
+	->
+
+
+# commands
+	-> use minilube docker-deamon
+		$ eval $(minikube -p minikube docker-env)
