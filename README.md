@@ -46,7 +46,8 @@
 		* orgnazing pods with labels
 		* Listing subset of pods through label selectors
 		* Using labels and selectors to constrain pod scheduling
-	->
+	-> Liveness probes
+		*
 
 
 # commands
