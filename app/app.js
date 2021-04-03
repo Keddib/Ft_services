@@ -1,10 +1,13 @@
 const http = require('http');
 const os = require('os');
-console.log("Kubia server starting...");
+
+console.log('server is listening ...');
 var handler = function(request, response)
 {
 	console.log("Received request from " + request.connection.remoteAddress);
 	response.writeHead(200);
-	response.end("You've hit " + os.hostname() + "\n");
+	response.end(os.hostname() + ": Thank you so much for your request\n");
 };
-var www = http.createServer(handler);www.listen(8080);
+
+var www = http.createServer(handler);
+www.listen(8080);
