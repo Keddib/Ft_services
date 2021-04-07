@@ -17,9 +17,3 @@ COPY default.conf /etc/nginx/conf.d/
 COPY run.sh .
 
 ENTRYPOINT sh run.sh
-
-
-
-
-
-

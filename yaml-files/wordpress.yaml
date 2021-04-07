@@ -6,13 +6,13 @@ metadata:
     app: wp-pod
 spec:
   containers:
-  - image: mysql-db
-    name: db
+  - image: wp-site
+    name: wordpress
     imagePullPolicy: Never
-  - image: wordpress-app
-    name: front-end
+  - image: wp-db
+    name: mysql
     imagePullPolicy: Never
     ports:
     - name: http
-      containerPort: 8080
+      containerPort: 80
       protocol: TCP

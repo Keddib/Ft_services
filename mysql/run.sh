@@ -6,7 +6,7 @@ rc-status
 
 service mariadb start
 
-mysql -u root -e "CREATE DATABASE wordpress;GRANT ALL ON wordpress.* to 'wp-user'@'localhsot' IDENTIFIED BY 'wp-pass';FLUSH PRIVILEGES;"
+mysql -u root -e "CREATE DATABASE wordpress;GRANT ALL ON wordpress.* to 'wp-user'@'%' IDENTIFIED BY 'wp-pass';FLUSH PRIVILEGES;"
 
 mysql < /wordpress.sql -u root wordpress
 

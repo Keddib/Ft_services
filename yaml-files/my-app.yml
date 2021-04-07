@@ -6,13 +6,12 @@ metadata:
     app: my-opp
 spec:
   containers:
-  - image: my-app
+  - image: nginx
     name: js-app
     livenessProbe:
       httpGet:
         path: /
         port: 8080
-    imagePullPolicy: Never
     ports:
     - containerPort: 8080
       protocol: TCP
