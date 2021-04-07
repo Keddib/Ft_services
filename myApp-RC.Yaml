@@ -6,8 +6,6 @@ metadata:
 
 spec:
   replicas: 3
-  selector:
-    app: my-app
 
   template:
     metadata:

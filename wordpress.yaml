@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wp-website
+  labels:
+    app: wp-pod
+spec:
+  containers:
+  - image: mysql-db
+    name: db
+    imagePullPolicy: Never
+  - image: wordpress-app
+    name: front-end
+    imagePullPolicy: Never
+    ports:
+    - name: http
+      containerPort: 8080
+      protocol: TCP

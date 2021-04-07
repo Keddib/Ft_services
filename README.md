@@ -79,7 +79,26 @@
 			3. easy horizontal scaling of pods ( manual and auto).
 			!! a pod is never relocated to another node. instead, rc creats a new pod that has no relation with it's replacing
 	-> Replicasets
-		* 
+		* Comparing ReplicaSet to a ReplacationController
+			1. behave exactly the same, but ReplicaSet has more expressive pod selectors
+			2. whereas a RC's label selector only allows matching pods that include a certain label.
+			3. a ReplicaSet's selector also allow matching pods that lack a certain label or pods that include a certain label key, regardless of its value
+			4. RC can't match one label key with two values(env=prod | env=devel), it can match one of them only
+			5. ReplicaSet can match both and treat them as one group
+			6. ReplicaSet can match pods with a label key(env) regardless of it's value think of it like (env=*).
+		* Defining a ReplicaSet
+			1. makes sure a pod or multiple pod replicas is always running by starting a new pod when an exsiting one goes missing
+			2. when node fails , it creats a replacement for all the pods that are under rs's controle.
+			3. easy horizontal scaling of pods ( manual and auto).
+			!! a pod is never relocated to another node. instead, rs creats a new pod that has no relation with it's replacing
+	-> Services
+		* Introducing Services:
+			1. K8s Service is a source that make a single, constant point of entry to a group of pods providing the same service.
+			2. each service has an IP adress and port that never changes while the service excite.
+			3. Clients can open connections to that IP and port, then those connections are routed to one of the pods backing that service.
+			4. so we don;t need to know the location of individual pods providing the service, allowing those pods to be moved around the cluster at any time
+
+
 # commands
 	-> use minilube docker-deamon
 		$ eval $(minikube -p minikube docker-env)

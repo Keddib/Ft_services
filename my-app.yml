@@ -3,8 +3,7 @@ kind: Pod
 metadata:
   name: my-app
   labels:
-    creation_method: manual
-    env: prod
+    app: my-opp
 spec:
   containers:
   - image: my-app
