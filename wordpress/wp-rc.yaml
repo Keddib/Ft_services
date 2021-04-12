@@ -26,11 +26,9 @@ kind: Service
 metadata:
   name: wp-service
 spec:
-  type: NodePort
   ports:
   - name: wp-sp
     port: 80
     targetPort: wp-port
-    nodePort: 30123
   selector:
-    app: worpdress
+    app: wordpress
