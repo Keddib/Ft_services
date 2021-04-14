@@ -1,14 +1,28 @@
-#!/bin/sh
+#!/bin/bash
 
-minikube start #start the cluser
+kubectl delete rc --all
+kubectl delete svc --all
+kubectl delete po --all
+kubectl delete configmap --all -n ns metallb-system
 
-eval $(minikube -p minikube docker-env) # point our shell to minikube's docker-daemon
+minikube stop
+minikube delete
 
-docker build -t mysql-img ./srcs/mysql
-docker build -t wordpress-img ./srcs/wordpress
-docker build -t phpmyadmine-img ./srcs/phpmyadmine
+minikube start --driver=virtualbox --memory='3000'
 
-# docker build -t mysql-img ./srcs/mysql
-# docker build -t mysql-img ./srcs/mysql
-# docker build -t mysql-img ./srcs/mysql
-# docker build -t mysql-img ./srcs/mysql
+minikube addons enable metallb
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
+#next line is only when you use mettallb for first time
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
+kubectl apply -f ./src/yamlFiles/metalLB-config.yaml
+
+eval $(minikube docker-env)
+
+docker build -t mysql-img ./src/mysql
+docker build -t wordpress-img ./src/wordpress
+docker build -t phpmyadmine-img ./src/phpmyadmin
+
+kubectl apply -f ./src/yamlFiles/mysql-rc.yaml
+kubectl apply -f ./src/yamlFiles/wp-rc.yaml

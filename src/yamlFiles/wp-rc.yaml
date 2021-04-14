@@ -26,9 +26,10 @@ kind: Service
 metadata:
   name: wp-service
 spec:
-  ports:
-  - name: wp-sp
-    port: 80
-    targetPort: wp-port
   selector:
     app: wordpress
+  type: LoadBalancer
+  ports:
+  - name: wp-sp
+    port: 5050
+    targetPort: wp-port
