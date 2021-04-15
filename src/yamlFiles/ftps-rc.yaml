@@ -1,35 +1,32 @@
 apiVersion: v1
-
 kind: ReplicationController
+
 metadata:
-  name: mysql-rc
+  name: ftps-rc
 
 spec:
   replicas: 1
-
   template:
     metadata:
       labels:
-        app: mysql
+        app: ftps
     spec:
       containers:
-      - name: mysql
-        image: mysql-img
+      - name: ftps
+        image: ftps-img
         imagePullPolicy: Never
         ports:
-        - name: mysql-port
-          containerPort: 3306
-
+        - name: ftps-port
+          containerPort: 21
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: ftps-service
 spec:
-  ports:
-  - name: mysql-sp
-    port: 3306
-    targetPort: mysql-port
   selector:
-    app: mysql
+    app: ftps
+  ports:
+    - port: 21
+      targetPort: ftps-port
+  type: LoadBalancer

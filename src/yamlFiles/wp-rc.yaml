@@ -28,8 +28,8 @@ metadata:
 spec:
   selector:
     app: wordpress
-  type: LoadBalancer
   ports:
   - name: wp-sp
-    port: 8080
+    port: 5000
     targetPort: wp-port
+  type: LoadBalancer
