@@ -1,10 +1,4 @@
 #!/bin/bash
-
-kubectl delete rc --all
-kubectl delete svc --all
-kubectl delete po --all
-kubectl delete configmap --all -n ns metallb-system
-
 minikube stop
 minikube delete
 
@@ -26,3 +20,4 @@ docker build -t ftps-img ./src/ftps
 
 kubectl apply -f ./src/yamlFiles/mysql-rc.yaml
 kubectl apply -f ./src/yamlFiles/wp-rc.yaml
+kubectl apply -f ./src/yamlFiles/phpmyadmin-rc.yaml
