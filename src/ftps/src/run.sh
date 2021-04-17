@@ -1,28 +1,28 @@
 #!/bin/sh
+
 rm /etc/vsftpd/vsftpd.conf
 mv /src/vsftpd.conf  /etc/vsftpd/
 
-<<<<<<< HEAD
 echo -e "1337\n1337" | adduser wolfey
 
-mkdir /var/wolfey/ ; mkdir /var/wolfey/pub/
+mkdir /home/wolfey/ftp
 
-echo "wolfey test file" | tee /var/wolfey/pub/test.txt
+chown nobody:nogroup /home/wolfey/ftp
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
--keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem \
--subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.wolfey.com"
+chmod a-w /home/wolfey/ftp
 
+mkdir /home/wolfey/ftp/files
+chown wolfey:wolfey /home/wolfey/ftp/files
 
-#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
-=======
-echo "1337\n1337" | adduser wolfey
-echo "1337\n1337" | adduser keddib
->>>>>>> 564326ab65ddd925b7cff13ed93192e18e9957a8
+echo "vsftpd test file" | tee /home/wolfey/ftp/files/test.txt
+
+echo "wolfey" | tee -a /etc/vsftpd.userlist
 
 echo "vsftpd test file" | sudo tee /home/wolfey/test.txt
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+	-keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem \
+	-subj "/C=US/ST=LOL/L=BG/O=DEB/CN=wolfey.com"
 
 rc-status
 
