@@ -16,21 +16,32 @@ spec:
         image: ftps-img
         imagePullPolicy: Never
         ports:
-        - name: ftps-port
-          containerPort: 21
-          containerPort: 40000
-          containerPort: 40001
-          containerPort: 40002
+        - containerPort: 21
+        - containerPort: 20
+        - containerPort: 30020
+        - containerPort: 30021
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    metallb.universe.tf/allow-shared-ip: leet
   name: ftps-service
 spec:
   selector:
     app: ftps
   ports:
-    - port: 21
-      targetPort: ftps-port
+  - port: 21
+    targetPort: 21
+    name: ftp21
+  - port: 20
+    targetPort: 20
+    name: ftp20
+  - port: 30020
+    targetPort: 30020
+    name: ftp30020
+  - port: 30021
+    targetPort: 30021
+    name: ftp30021
   type: LoadBalancer

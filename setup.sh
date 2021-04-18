@@ -18,6 +18,7 @@ docker build -t wordpress-img ./src/wordpress
 docker build -t phpmyadmin-img ./src/phpmyadmin
 docker build -t ftps-img ./src/ftps
 
-kubectl apply -f ./src/yamlFiles/mysql-rc.yaml
-kubectl apply -f ./src/yamlFiles/wp-rc.yaml
-kubectl apply -f ./src/yamlFiles/phpmyadmin-rc.yaml
+kubectl apply -f ./src/yamlFiles/mysql.yaml
+kubectl apply -f ./src/yamlFiles/wordpress.yaml
+kubectl apply -f ./src/yamlFiles/phpmyadmin.yaml
+kubectl apply -f ./src/yamlFiles/ftps.yaml

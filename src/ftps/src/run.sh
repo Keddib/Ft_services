@@ -22,7 +22,7 @@ echo "vsftpd test file" | sudo tee /home/wolfey/test.txt
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 	-keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem \
-	-subj "/C=US/ST=LOL/L=BG/O=DEB/CN=wolfey.com"
+	-subj "/C=US/ST=BG/L=1337/O=wolfey/CN=wolfey.com"
 
 rc-status
 
