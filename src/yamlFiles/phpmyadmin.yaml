@@ -32,6 +32,6 @@ spec:
     app: phpmyadmin
   ports:
   - name: php-sp
-    port: 8080
+    port: 5050
     targetPort: php-port
   type: LoadBalancer

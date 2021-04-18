@@ -44,5 +44,6 @@ $cfg['Servers'][$i]['port'] = '3306';
 $cfg['Servers'][$i]['controluser'] = 'wp-user';
 $cfg['Servers'][$i]['controlpass'] = 'wp-pass';
 
+$cfg['PmaAbsoluteUri'] = '/';
 
 $cfg['TempDir'] = '/var/www/';

@@ -1,6 +1,10 @@
 #!/bin/bash
+
+./delete-all.sh
+
 minikube stop
 minikube delete
+
 
 minikube start --driver=virtualbox --memory='3000'
 
@@ -17,8 +21,10 @@ docker build -t mysql-img ./src/mysql
 docker build -t wordpress-img ./src/wordpress
 docker build -t phpmyadmin-img ./src/phpmyadmin
 docker build -t ftps-img ./src/ftps
+docker build -t nginx-img ./src/nginx
 
 kubectl apply -f ./src/yamlFiles/mysql.yaml
 kubectl apply -f ./src/yamlFiles/wordpress.yaml
 kubectl apply -f ./src/yamlFiles/phpmyadmin.yaml
 kubectl apply -f ./src/yamlFiles/ftps.yaml
+kubectl apply -f ./src/yamlFiles/nginx.yaml
