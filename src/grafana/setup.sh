@@ -1,5 +1,5 @@
 rc-status
 
-service telegraf restart
+service telegraf start
 
 ./grafana/bin/grafana-server --homepath /grafana

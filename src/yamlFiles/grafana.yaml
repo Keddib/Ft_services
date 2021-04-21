@@ -2,7 +2,7 @@ apiVersion: v1
 
 kind: ReplicationController
 metadata:
-  name: wordpress
+  name: grafana
 
 spec:
   replicas: 1
@@ -10,18 +10,19 @@ spec:
   template:
     metadata:
       labels:
-        app: wordpress
+        app: grafana
     spec:
       containers:
-      - name: wordpress
-        image: wordpress-img
+      - name: grafana
+        image: grafana-img
         imagePullPolicy: Never
         ports:
-        - name: wp-port
-          containerPort: 80
-        livenessProbe:  #liveness prob to tech telegraf
-          tcpSocket:
-            port: 80
+        - name: grafana-port
+          containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
           initialDelaySeconds: 30
 
 ---
@@ -30,12 +31,14 @@ kind: Service
 metadata:
   annotations:
     metallb.universe.tf/allow-shared-ip: leet
-  name: wp-service
+  name: grafana-service
 spec:
   selector:
-    app: wordpress
+    app: grafana
   ports:
-  - name: wp-sp
-    port: 5000
-    targetPort: wp-port
+  - name: grafana-sp
+    port: 3000
+    targetPort: grafana-port
   type: LoadBalancer
+
+# liveness prob for telegraf

@@ -6,4 +6,10 @@ RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
 COPY src/* /src/
 
+# telegraf
+
+RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+
+RUN rm /etc/telegraf.conf
+
 ENTRYPOINT sh /src/run.sh

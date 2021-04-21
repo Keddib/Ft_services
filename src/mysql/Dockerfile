@@ -12,4 +12,12 @@ COPY run.sh .
 
 COPY wordpress.sql .
 
+# telegraf
+
+RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+
+RUN rm /etc/telegraf.conf
+
+COPY telegraf.conf /etc/
+
 ENTRYPOINT sh run.sh

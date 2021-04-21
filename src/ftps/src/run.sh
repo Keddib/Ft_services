@@ -2,6 +2,7 @@
 
 rm /etc/vsftpd/vsftpd.conf
 mv /src/vsftpd.conf  /etc/vsftpd/
+mv /src/telegraf.conf /etc/telegraf.conf
 
 echo -e "1337\n1337" | adduser wolfey
 
@@ -27,5 +28,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 rc-status
 
 service vsftpd restart
+
+service telegraf start
 
 tail -f /dev/null

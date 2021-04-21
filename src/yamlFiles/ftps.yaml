@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ReplicationController
 
 metadata:
-  name: ftps-rc
+  name: ftps
 
 spec:
   replicas: 1
@@ -20,6 +20,10 @@ spec:
         - containerPort: 20
         - containerPort: 30020
         - containerPort: 30021
+        livenessProbe:
+          tcpSocket:
+            port: 21
+          initialDelaySeconds: 15
 
 ---
 apiVersion: v1
@@ -45,3 +49,5 @@ spec:
     targetPort: 30021
     name: ftp30021
   type: LoadBalancer
+
+#liveness prob for telegraf

@@ -8,4 +8,6 @@ rc-status
 
 service nginx start
 
+service telegraf start
+
 tail -f /dev/null
