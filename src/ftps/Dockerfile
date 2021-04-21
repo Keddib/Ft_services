@@ -4,12 +4,12 @@ RUN apk update && apk add openrc openssl vsftpd
 
 RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
-COPY src/* /src/
+WORKDIR /source/
+
+COPY src .
 
 # telegraf
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
-RUN rm /etc/telegraf.conf
-
-ENTRYPOINT sh /src/run.sh
+ENTRYPOINT sh run.sh

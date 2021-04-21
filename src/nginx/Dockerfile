@@ -1,22 +1,15 @@
 FROM alpine:3.11
-RUN apk update && apk add nginx openrc openssl
+RUN apk update && apk add nginx openrc openssl openssh
 
 
-RUN mkdir /run/openrc && touch /run/openrc/softlevel && \
-	rm /etc/nginx/conf.d/default.conf
+RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
-COPY default.conf /etc/nginx/conf.d/
+WORKDIR /source/
 
-COPY app /var/www/app
-
-COPY run.sh .
+COPY src .
 
 # telegraf
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-
-RUN rm /etc/telegraf.conf
-
-COPY telegraf.conf /etc/
 
 ENTRYPOINT sh run.sh

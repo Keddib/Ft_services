@@ -8,14 +8,13 @@ RUN wget https://dl.grafana.com/enterprise/release/grafana-enterprise-7.5.4.linu
 
 RUN mv grafana-7.5.4 grafana
 
+WORKDIR /source
+
+COPY src .
+
+
 # telegraf
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-
-RUN rm /etc/telegraf.conf
-
-COPY telegraf.conf /etc/
-
-COPY setup.sh .
 
 ENTRYPOINT ./setup.sh

@@ -8,20 +8,12 @@ RUN wget http://wordpress.org/latest.tar.gz && tar -xzvf latest.tar.gz && rm lat
 
 RUN mv wordpress /var/www/
 
-RUN rm /var/www/wordpress/wp-config-sample.php /etc/nginx/conf.d/default.conf
+WORKDIR /source/
 
-COPY wp-config.php /var/www/wordpress/
-
-COPY default.conf /etc/nginx/conf.d/
-
-COPY run.sh .
+COPY src .
 
 # telegraf
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-
-RUN rm /etc/telegraf.conf
-
-COPY telegraf.conf /etc/
 
 ENTRYPOINT sh run.sh

@@ -4,28 +4,14 @@ RUN apk update && apk add nginx openrc mysql-client php7 php7-fpm php7-opcache p
 
 RUN mkdir -p /run/openrc && touch /run/openrc/softlevel
 
-COPY run.sh .
-
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY default.conf /etc/nginx/conf.d/
-
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz && tar xvf phpMyAdmin-5.0.4-english.tar.gz
 
-RUN mv phpMyAdmin-5.0.4-english /var/www/phpmyadmin
+WORKDIR /source/
 
-RUN rm -rf php*.tar.gz
-
-RUN chmod -R 777 /var/www/
-
-COPY config.inc.php /var/www/phpmyadmin/
+COPY src .
 
 # telegraf
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
-
-RUN rm /etc/telegraf.conf
-
-COPY telegraf.conf /etc/
 
 ENTRYPOINT sh run.sh

@@ -2,6 +2,7 @@
 
 rm /etc/vsftpd/vsftpd.conf
 mv /src/vsftpd.conf  /etc/vsftpd/
+rm /etc/telegraf.conf
 mv /src/telegraf.conf /etc/telegraf.conf
 
 echo -e "1337\n1337" | adduser wolfey
@@ -31,4 +32,9 @@ service vsftpd restart
 
 service telegraf start
 
-tail -f /dev/null
+while [ 1 -eq 1 ]; do
+	val=`ps`
+	if [[ ! "$val" =~ "telegraf" ]]; then
+          break ;
+    fi
+done
