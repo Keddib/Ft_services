@@ -1,9 +1,9 @@
 #!/bin/sh
 
 rm /etc/vsftpd/vsftpd.conf
-mv /src/vsftpd.conf  /etc/vsftpd/
+mv vsftpd.conf  /etc/vsftpd/
 rm /etc/telegraf.conf
-mv /src/telegraf.conf /etc/telegraf.conf
+mv telegraf.conf /etc/telegraf.conf
 
 echo -e "1337\n1337" | adduser wolfey
 
@@ -31,6 +31,8 @@ rc-status
 service vsftpd restart
 
 service telegraf start
+
+sleep 15s
 
 while [ 1 -eq 1 ]; do
 	val=`ps`

@@ -21,6 +21,8 @@ spec:
           containerPort: 80
         - name: nginx-https
           containerPort: 443
+        - name: nginx-ssh
+          containerPort: 22
         livenessProbe:
           httpGet:
             path: /
@@ -44,6 +46,9 @@ spec:
   - name: nginx-htps
     port: 443
     targetPort: nginx-https
+  - name: nginx-sh
+    port: 22
+    targetPort: nginx-ssh
   type: LoadBalancer
 
   #liveness prob to tech telegraf

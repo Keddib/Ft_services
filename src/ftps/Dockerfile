@@ -1,6 +1,6 @@
 FROM alpine:3.11
 
-RUN apk update && apk add openrc openssl vsftpd
+RUN apk update && apk add bash openrc openssl vsftpd
 
 RUN mkdir /run/openrc && touch /run/openrc/softlevel
 
@@ -12,4 +12,4 @@ COPY src .
 
 RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
-ENTRYPOINT sh run.sh
+ENTRYPOINT bash run.sh

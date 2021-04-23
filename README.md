@@ -102,11 +102,11 @@
 # commands
 	-> use minilube docker-deamon
 		$ eval $(minikube -p minikube docker-env)
-		
-		
-# TODO : 
-granafa.db not moving to the grafana/data ???!!!
-add /grafana/bin to path and reset admin pass with : $ grafana-cli reset-admin-password <new-pass>
-wordpress.db not moving to mysqldb : we need to move / from mysql/run.sh
-add port 22 to Nginx pod and service to access it via SSH
-check ftps liveness prob.
+
+
+# TODO :
+- granafa.db not moving to the grafana/data ???!!! done
+- add /grafana/bin to path and reset admin pass with : $ grafana-cli  reset-admin-password <new-pass> done
+- wordpress.db not moving to mysqldb : we need to move / from mysql/run.sh done
+- add port 22 to Nginx pod and service to access it via SSH done
+- check ftps liveness prob. done
