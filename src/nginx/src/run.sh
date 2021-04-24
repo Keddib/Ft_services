@@ -20,15 +20,9 @@ service sshd start
 
 service telegraf start
 
-# while [ 1 -eq 1 ]; do
-# 	val=`ps`
-# 	if [[ ! "$val" =~ "telegraf" ]] || [[ ! "$val" =~ "sshd" ]]; then
-#           break ;
-#     fi
-# done
 while [ 1 -eq 1 ]; do
 	val=`ps`
-	if [[ ! "$val" =~ "telegraf" ]]; then
+	if [[ ! "$val" =~ "telegraf" ]] || [[ ! "$val" =~ "sshd" ]]; then
           break ;
     fi
 done

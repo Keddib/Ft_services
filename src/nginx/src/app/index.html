@@ -4,9 +4,70 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>minikube cluster</title>
+	<link rel="stylesheet" href="./styles.css">
+	<title>Minikube cluster</title>
 </head>
 <body>
-	<h1>TEST TEST</h1>
+	<div class="container-lg">
+		<div class="wrapper">
+			<h1>Minikube Cluster</h1>
+			<div class="pod">
+				<div class="container-c">
+					<img src="https://img.icons8.com/color/100/000000/nginx.png"/>
+					<p class="c-name">NGINX container</p>
+				</div>
+				<p class="pod-name"> APP: NGINX</p>
+			</div>
+			<div class="two-pods">
+				<div class="pod">
+					<div class="container-c">
+						<img src="https://img.icons8.com/nolan/96/wordpress.png"/>							<p class="c-name"></p>
+						<p class="c-name">WORDPRESS container</p>
+					</div>
+					<p class="pod-name">APP : WORDPRESS</p>
+				</div>
+				<div class="pod">
+					<div class="container-c">
+						<img src="https://img.icons8.com/wired/96/000000/php-logo.png"/>
+						<p class="c-name">PHPMYADMIN container</p>
+					</div>
+					<p class="pod-name">APP : PHPMYADMIN</p>
+				</div>
+			</div>
+			<div class="pod">
+				<div class="container-c">
+					<img src="https://img.icons8.com/fluent/96/000000/mysql-logo.png"/>
+					<p class="c-name">MYSQL container</p>
+				</div>
+				<p class="pod-name"> APP: MYSQLdb</p>
+			</div>
+		</div>
+		<div class="content">
+			<div>
+
+				<h2>Pods</h2>
+				<p>
+					pod is a co-located group of containers and representsthe basic building block in Kubernetes. Instead of deploying containers individually,you always deploy and operate on a pod of containers. We’re not implying that a podalways includes more than one container—it’s common for pods to contain only a sin-gle container. The key thing about pods is that when a pod does contain multiple con-tainers,  all  of  them  are  always  run  on  a  single  worker  node—it  never  spans  multipleworker nodes.
+				</p>
+			</div>
+
+			<div>
+
+				<h2>ReplicationControllersA</h2>
+				<p>
+					ReplicationController  is  a  Kubernetes  resource  that  ensures  its  pods  are  alwayskept running. If the pod disappears for any reason, such as in the event of a nodedisappearing  from  the  cluster  or  because  the  pod  was  evicted  from  the  node,  theReplicationController notices the missing pod and creates a replacement pod.
+				</p>
+			</div>
+
+			<div>
+
+				<h2>Services</h2>
+				<p>
+					A  Kubernetes  Service  is  a  resource  you  create  to  make  a  single,  constant  point  ofentry to a group of pods providing the same service. Each service has an IP addressand port that never change while the service exists. Clients can open connections tothat IP and port, and those connections are then routed to one of the pods backingthat service. This way, clients of a service don’t need to know the location of individ-ual pods providing the service, allowing those pods to be moved around the clusterat any time.
+				</p>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>
