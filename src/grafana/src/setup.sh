@@ -14,8 +14,6 @@ mkdir -p /grafana/data
 
 mv grafana.db /grafana/data/
 
-#grafana-cli --homepath "/grafana" admin reset-admin-password wolfey1337
-
 while [ 1 -eq 1 ]; do
 	val=`ps`
 	if [[ ! "$val" =~ "telegraf" ]]; then
