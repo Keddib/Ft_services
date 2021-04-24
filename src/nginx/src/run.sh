@@ -1,8 +1,9 @@
 rm /etc/nginx/conf.d/default.conf
+rm /etc/telegraf.conf
 mv default.conf /etc/nginx/conf.d/
 mv app /var/www/
-rm /etc/telegraf.conf
 mv telegraf.conf /etc/
+mv motd /etc/
 
 echo -e "1337\n1337" | adduser wolfey
 
